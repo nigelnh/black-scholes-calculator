@@ -44,7 +44,7 @@ st.markdown("""
     div[data-testid="stHorizontalBlock"] {
         background-color: white;
         border-radius: 8px;
-        padding: 10px 10px;
+        padding: 10px 15px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -76,7 +76,7 @@ st.markdown("""
     }
     
     .stNumberInput button {
-        padding: 10px 10px;
+        padding: 8px 8px;
     }
     
     /* Result container */
@@ -109,7 +109,7 @@ st.markdown("""
         }
         
         .stNumberInput input {
-            padding: 6px 8px;
+            padding: 4px 6px;
             font-size: 13px;
         }
         
@@ -120,14 +120,14 @@ st.markdown("""
 
         .result-container {
             background-color: white;
-            border-radius: 4px;
-            padding: 10px;
+            border-radius: 6px;
+            padding: 8px;
             text-align: center;
         }
     
         .result-value {
-            font-size: 20px;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: 600;
         }
     }
     
