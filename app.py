@@ -33,7 +33,6 @@ def black_scholes_call_warrant(S0, K, T, r, sigma, conversion_ratio=1.0):
         return call_price
     return call_price
 
-# Styling
 st.markdown("""
     <style>
     
@@ -42,25 +41,50 @@ st.markdown("""
         color: black; 
     }
 
-    /* Input containers */
     div[data-testid="stHorizontalBlock"] {
         background-color: white;
         border-radius: 8px;
-        padding: 15px 15px;
-        # margin-bottom: 12px;
+        padding: 12px 12px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
         align-items: center;
+        gap: 10px;
     }
     
-    /* Input fields */
+    div[data-testid="stHorizontalBlock"] > div:first-child {
+        flex: 1 1 auto;
+        min-width: 120px;
+    }
+    
+    div[data-testid="stHorizontalBlock"] > div:last-child {
+        flex: 0 1 auto;
+        min-width: 150px;
+        max-width: 250px;
+    }
+    
+    .stNumberInput {
+        width: 100%;
+    }
+    
     .stNumberInput input {
-        padding: 12px 12px;
+        border-radius: 4px;
+        padding: 8px 12px;
+        background-color: white;
+        color: black;
+        font-size: 15px;
+        width: 100%;
+    }
+    
+    .stNumberInput button {
+        padding: 10px 10px;
     }
     
     /* Result container */
     .result-container {
         background-color: white;
         border-radius: 8px;
-        padding: 15px;
+        padding: 25px;
         text-align: center;
     }
     
@@ -68,16 +92,55 @@ st.markdown("""
         font-size: 28px;
         font-weight: 700;
     }
+    
+    /* Mobile */
+    @media (max-width: 640px) {
+        div[data-testid="stHorizontalBlock"] {
+            padding: 10px 15px;
+        }
+        
+        div[data-testid="stHorizontalBlock"] > div:first-child {
+            min-width: 100px;
+            font-size: 13px;
+        }
+        
+        div[data-testid="stHorizontalBlock"] > div:last-child {
+            min-width: 120px;
+            max-width: 180px;
+        }
+        
+        .stNumberInput input {
+            padding: 6px 8px;
+            font-size: 13px;
+        }
+        
+        .stNumberInput button {
+            padding: 4px 6px;
+            font-size: 11px;
+        }
 
+        .result-container {
+            background-color: white;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+        }
+    
+        .result-value {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+    
     </style>
 """, unsafe_allow_html=True)
 
 # UI
-st.title("Black-Scholes Calculator")
+st.markdown("## Black-Scholes Calculator") 
 
 # S0
 with st.container():
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([2.5, 1.5])
     with col1:
         st.markdown("**Current Stock Price (VND)**")
     with col2:
@@ -85,7 +148,7 @@ with st.container():
 
 # K
 with st.container():
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([2.5, 1.5])
     with col1:
         st.markdown("**Exercise Price (VND)**")
     with col2:
@@ -93,7 +156,7 @@ with st.container():
 
 # T
 with st.container():
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([2.5, 1.5])
     with col1:
         st.markdown("**Maturity date (days)**")
     with col2:
@@ -101,7 +164,7 @@ with st.container():
 
 # R
 with st.container():
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([2.5, 1.5])
     with col1:
         st.markdown("**Risk-free interest rate (%)**")
     with col2:
@@ -110,7 +173,7 @@ with st.container():
 
 # sigma
 with st.container():
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([2.5, 1.5])
     with col1:
         st.markdown("**Volatility (%)**")
     with col2:
@@ -119,7 +182,7 @@ with st.container():
 
 # conversion_ratio
 with st.container():
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([2.5, 1.5])
     with col1:
         st.markdown("**Conversion ratio (n:1)**")
     with col2:
