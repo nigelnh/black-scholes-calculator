@@ -44,12 +44,11 @@ st.markdown("""
     div[data-testid="stHorizontalBlock"] {
         background-color: white;
         border-radius: 8px;
-        padding: 12px 12px;
+        padding: 10px 10px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
-        gap: 10px;
     }
     
     div[data-testid="stHorizontalBlock"] > div:first-child {
@@ -105,7 +104,7 @@ st.markdown("""
         }
         
         div[data-testid="stHorizontalBlock"] > div:last-child {
-            min-width: 120px;
+            min-width: 100px;
             max-width: 180px;
         }
         
@@ -116,7 +115,7 @@ st.markdown("""
         
         .stNumberInput button {
             padding: 4px 6px;
-            font-size: 11px;
+            font-size: 13px;
         }
 
         .result-container {
