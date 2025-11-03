@@ -57,7 +57,7 @@ st.markdown("""
     }
     
     div[data-testid="stHorizontalBlock"] > div:last-child {
-        flex: 0 1 auto;
+        flex: 1 1 auto;
         min-width: 150px;
         max-width: 250px;
     }
@@ -67,6 +67,7 @@ st.markdown("""
     }
     
     .stNumberInput input {
+        border: none;
         border-radius: 4px;
         padding: 8px 12px;
         background-color: white;
@@ -75,8 +76,14 @@ st.markdown("""
         width: 100%;
     }
     
+    .stNumberInput input:focus {
+        outline: none;
+        border: none;
+    }
+    
+    /* Hide +/- buttons */
     .stNumberInput button {
-        padding: 8px 8px;
+        display: none;
     }
     
     /* Result container */
@@ -109,11 +116,6 @@ st.markdown("""
         }
         
         .stNumberInput input {
-            padding: 4px 6px;
-            font-size: 13px;
-        }
-        
-        .stNumberInput button {
             padding: 4px 6px;
             font-size: 13px;
         }
