@@ -30,7 +30,7 @@ def black_scholes_call_warrant(S0, K, T, r, sigma, conversion_ratio=1.0):
         d2 = d1 - sigma * np.sqrt(T)
         call_price = S0_adjusted * norm.cdf(d1) - K_adjusted * np.exp(-r * T) * norm.cdf(d2)
     
-        return call_price   
+        return call_price
     return call_price
 
 # Styling
@@ -46,23 +46,21 @@ st.markdown("""
     div[data-testid="stHorizontalBlock"] {
         background-color: white;
         border-radius: 8px;
-        padding: 15px 25px;
-        margin-bottom: 12px;
+        padding: 15px 15px;
+        # margin-bottom: 12px;
         align-items: center;
     }
     
     /* Input fields */
     .stNumberInput input {
         padding: 12px 12px;
-        background-color: white;
-        color: black; 
     }
     
     /* Result container */
     .result-container {
         background-color: white;
         border-radius: 8px;
-        padding: 25px;
+        padding: 15px;
         text-align: center;
     }
     
