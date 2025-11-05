@@ -20,7 +20,7 @@ def black_scholes_call_warrant(S0, K, T, r, sigma, conversion_ratio=1.0):
     call_price = 0
 
     # Avoid FloatDivisionError
-    if S0 and K != 0:  
+    if S0 != 0 and K != 0:  
         # Adjust for conversion ratio
         S0_adjusted = S0 / conversion_ratio
         K_adjusted = K / conversion_ratio
