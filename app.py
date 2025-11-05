@@ -170,6 +170,7 @@ with st.container():
             "maturity_date",
             value=None,
             min_value=datetime.today() + timedelta(days=1),  # Minimum 1 day in future
+            format="DD/MM/YYYY",
             label_visibility="collapsed"
         )
         
