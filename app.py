@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 from scipy.stats import norm
+from datetime import datetime, timedelta
 
 def black_scholes_call_warrant(S0, K, T, r, sigma, conversion_ratio=1.0):
     """
@@ -163,9 +164,21 @@ with st.container():
 with st.container():
     col1, col2 = st.columns([2.5, 1.5])
     with col1:
-        st.markdown("**Maturity date (days)**")
+        st.markdown("**Maturity date**")
     with col2:
-        maturity_days = st.number_input("maturity", min_value=1, value=None, step=1, format="%d", placeholder="Please enter content", label_visibility="collapsed")
+        maturity_date = st.date_input(
+            "maturity_date",
+            value=None,
+            min_value=datetime.today() + timedelta(days=1),  # Minimum 1 day in future
+            label_visibility="collapsed"
+        )
+        
+# Calculate days from today to maturity date
+# If no date selected, use default 324 days to prevent T=0
+if maturity_date:
+    maturity_days = (maturity_date - datetime.today().date()).days
+else:
+    maturity_days = 324  # Default backend value when blank
 
 # R
 with st.container():
