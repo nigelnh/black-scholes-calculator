@@ -137,6 +137,28 @@ st.markdown("""
             font-weight: 600;
         }
     }
+
+    /* Button Styling */
+    .stButton > button {
+        width: 100%;
+        background-color: #000000;
+        color: white;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 600;
+        border: none;
+        margin-top: 10px;
+        height: 50px;
+        transition: all 0.3s ease;
+    }
+    .stButton > button:hover {
+        background-color: #333333;
+        color: white;
+        border-color: #333333;
+    }
+    .stButton > button:active {
+        transform: scale(0.98);
+    }
     
     </style>
 """, unsafe_allow_html=True)
@@ -207,20 +229,27 @@ with st.container():
     with col2:
         conversion_ratio = st.number_input("ratio", min_value=0.1, value=None, step=0.1, format="%g", placeholder="Please enter content", label_visibility="collapsed")
         
-# Convert days to years & Calculate warrant price
-T = maturity_days / 365 if maturity_days else 0
-price = black_scholes_call_warrant(S0 if S0 else 0, K if K else 0, T, r, sigma, conversion_ratio if conversion_ratio else 1.0)
-
-# Display result
-st.markdown(f"""
-    <div class="result-container">
-        <div class="result-label">Covered Warrant (Call) Price</div>
-        <div class="result-value">{price:,.2f} VND</div>
-    </div>
-""", unsafe_allow_html=True)
-
-# Terminal testing
-print(f"Covered Warrant (Call) Price: {price:.2f} VND")
+# Calculate Logic
+if st.button("Calculate", use_container_width=True):
+    # Check if all placeholders are filled
+    inputs = [S0, K, maturity_date, r_input, sigma_input, conversion_ratio]
+    if all(v is not None for v in inputs):
+        # Calculation
+        T_years = (maturity_date - datetime.today().date()).days / 365
+        price = black_scholes_call_warrant(S0, K, T_years, r, sigma, conversion_ratio)
+        
+        # Display result
+        st.markdown(f"""
+            <div class="result-container" style="margin-top: 20px;">
+                <div class="result-label">Covered Warrant (Call) Price</div>
+                <div class="result-value">{price:,.2f} VND</div>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        # Terminal log
+        print(f"Covered Warrant (Call) Price: {price:.2f} VND")
+    else:
+        st.error("Please fill in all input fields before calculating.")
 
 # # Assumptions (based on your HPG data sample):
 # S0 =  25500.00  # Current HPG close price 
